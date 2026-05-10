@@ -2,16 +2,16 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-let inventory = [
+let movies= [
   { id: 1, movie: "Superman 2025", category: "Acción", stars: 4 },
   { id: 2, movie: "Siniestro", category: "Terror", stars: 3 }
 ];
 
-app.get('/inventory', (req, res) => {
+app.get('/movies', (req, res) => {
   res.status(200).json(inventory);
 });
 
-app.post('/inventory', (req, res) => {
+app.post('/movies', (req, res) => {
   const { movie, category, stars } = req.body;
   
   if (!movie || !category) {
@@ -29,7 +29,7 @@ app.post('/inventory', (req, res) => {
   res.status(201).json(newItem);
 });
 
-app.delete('/inventory/:id', (req, res) => {
+app.delete('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const exists = inventory.find(item => item.id === id);
 
@@ -37,7 +37,7 @@ app.delete('/inventory/:id', (req, res) => {
     return res.status(404).json({ error: "Película no encontrada" });
   }
 
-  inventory = inventory.filter(item => item.id !== id);
+  movies = movies.filter(item => item.id !== id);
   res.status(204).send();
 });
 
