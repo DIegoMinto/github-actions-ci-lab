@@ -4,7 +4,8 @@ app.use(express.json());
 
 let movies= [
   { id: 1, movie: "Superman 2025", category: "Acción", stars: 4 },
-  { id: 2, movie: "Siniestro", category: "Terror", stars: 3 }
+  { id: 2, movie: "Siniestro", category: "Terror", stars: 3 },
+  { id: 2, movie: "Scarface", category: "Acción", stars: 5 }
 ];
 
 app.get('/movies', (req, res) => {
