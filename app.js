@@ -8,7 +8,7 @@ let movies= [
 ];
 
 app.get('/movies', (req, res) => {
-  res.status(200).json(inventory);
+  res.status(200).json(movies);
 });
 
 app.post('/movies', (req, res) => {
@@ -19,19 +19,19 @@ app.post('/movies', (req, res) => {
   }
 
   const newItem = {
-    id: inventory.length + 1,
+    id: movies.length + 1,
     movie,
     category,
     stars
   };
 
-  inventory.push(newItem);
+  movies.push(newItem);
   res.status(201).json(newItem);
 });
 
 app.delete('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const exists = inventory.find(item => item.id === id);
+  const exists = movies.find(item => item.id === id);
 
   if (!exists) {
     return res.status(404).json({ error: "Película no encontrada" });
