@@ -1,0 +1,34 @@
+name: CI Movies API
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del Código
+        uses: actions/checkout@v6
+
+      - name: Setup del entorno de ejecución Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Instalación de las dependencias
+        run: npm ci
+
+      - name: Ejecución de Linting
+        run: npm run lint
+
+      - name: Ejecución de Pruebas
+        run: npm test
+
+      - name: Reporte de Cobertura
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-final
+          path: coverage/
