@@ -5,7 +5,7 @@ describe('Pruebas de API Películas', () => {
   test('GET /movies - listar películas', async () => {
     const res = await request(app).get('/movies');
     expect(res.statusCode).toBe(200);
-    expect(res.body.length).toBe(2);
+    expect(res.body.length).toBe(3);
   });
 
   test('POST /movies - crear película', async () => {
