@@ -9,7 +9,7 @@ describe('Pruebas de API Películas', () => {
   });
 
   test('POST /movies - crear película', async () => {
-    const res = await request(app).post('/movies').send({ movie: "Inception", categori: "Sci-Fi" });
+    const res = await request(app).post('/movies').send({ movie: "Inception", category: "Sci-Fi" });
     expect(res.statusCode).toBe(201);
   });
 });
